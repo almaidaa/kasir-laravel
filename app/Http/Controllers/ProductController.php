@@ -12,7 +12,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $product = Product::latest()->paginate(10); // Mengambil 10 produk terbaru dari database.
+        $products = Product::latest()->paginate(10); // Mengambil 10 produk terbaru dari database.
         return view('products.index', compact('products')); //Mengirimkannya ke tampilan view products/index.blade.php.
     }
 
@@ -36,7 +36,7 @@ class ProductController extends Controller
         ]);
 
         Product::create($request->all()); //Ini perintah untuk menyimpan data baru ke tabel products di database.
-        return redirect()->route('product.index')->with('success', 'Produk berhasil ditambahkan');
+        return redirect()->route('products.index')->with('success', 'Produk berhasil ditambahkan');
         
     }
 
